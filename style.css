@@ -90,7 +90,7 @@ body {
     display: flex;
     align-items: center;
     /* background: linear-gradient(135deg, var(--color-dark) 0%, rgba(44, 62, 80, 0.9) 100%); */
-    background-image: url('../Imagens/1925614-grafico-grafico-de-mercado-de-acoes-investimento-em-fundo-azul-vetor.jpg');
+    background-image: url('./Imagens/1925614-grafico-grafico-de-mercado-de-acoes-investimento-em-fundo-azul-vetor.jpg');
     background-size: cover;
     position: relative;
     overflow: hidden;
