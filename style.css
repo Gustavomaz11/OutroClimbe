@@ -1,0 +1,365 @@
+:root {
+    --color-primary: #3498db;
+    --color-secondary: #2ecc71;
+    --color-dark: #2c3e50;
+    --color-light: #ecf0f1;
+    --color-accent: #e74c3c;
+    --fibonacci-ratio: 1.618;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    line-height: 1.618;
+}
+
+.container {
+    max-width: 1236px;
+    margin: 0 auto;
+    padding: 0 21px;
+}
+
+/* NAVEGAÇÃO */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(44, 62, 80, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 13px 0;
+    box-shadow: 0 2px 13px rgba(0,0,0,0.1);
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1236px;
+    margin: 0 auto;
+    padding: 0 21px;
+}
+
+.navbar-logo img {
+    height: 55px;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 21px;
+}
+
+.navbar-menu a {
+    color: var(--color-light);
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    color: var(--color-primary);
+}
+
+.navbar-menu a:hover::after {
+    width: 100%;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    /* background: linear-gradient(135deg, var(--color-dark) 0%, rgba(44, 62, 80, 0.9) 100%); */
+    background-image: url('../Imagens/1925614-grafico-grafico-de-mercado-de-acoes-investimento-em-fundo-azul-vetor.jpg');
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    max-width: 1268px;
+    z-index: 10;
+}
+
+.hero-content h1 {
+    
+    font-size: 4.236rem;
+    color: var(--color-light);
+    margin-bottom: 21px;
+    line-height: 1.236;
+}
+
+.hero-content p {
+    font-size: 1.618rem;
+    color: var(--color-primary);
+    margin-bottom: 34px;
+}
+
+.hero-cta {
+    display: inline-block;
+    padding: 13px 34px;
+    background-color: var(--color-primary);
+    color: var(--color-light);
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.hero-cta:hover {
+    transform: translateY(-5px);
+}
+
+/* SEÇÕES */
+.section {
+    padding: 89px 0;
+    background-color: var(--color-dark);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 55px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 2.618rem;
+    color: var(--color-primary);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 89px;
+    height: 3px;
+    background-color: var(--color-primary);
+}
+
+/* GRID DE SERVIÇOS */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+}
+
+.service-card {
+    background-color: rgba(52, 152, 219, 0.1);
+    padding: 34px;
+    border-radius: 13px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card h3 {
+    color: var(--color-primary);
+    margin-bottom: 21px;
+}
+
+/* RODAPÉ */
+.footer {
+    background-color: rgba(44, 62, 80, 0.5);
+    padding: 55px 0;
+    backdrop-filter: blur(10px);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 34px;
+}
+
+.footer-column h4 {
+    color: var(--color-primary);
+    margin-bottom: 21px;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 13px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.618rem;
+    }
+    
+    .services-grid,
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* SEÇÃO DE EQUIPE */
+.team-section {
+    background-color: rgba(52, 73, 94, 0.5);
+    padding: 89px 0;
+    position: relative;
+}
+
+.team-slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 550px;
+    overflow: hidden;
+}
+
+.team-member {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.team-member.active {
+    opacity: 1;
+}
+
+.team-member-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.team-member-image img {
+    max-width: 380px;
+    max-height: 500px;
+    border-radius: 13px;
+    box-shadow: 0 21px 34px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.team-member-image img:hover {
+    transform: scale(1.05);
+}
+
+.team-member-info {
+    flex: 1;
+    padding: 0 34px;
+}
+
+.team-member-info h3 {
+    color: var(--color-primary);
+    font-size: 2.618rem;
+    margin-bottom: 21px;
+}
+
+.team-member-info h4 {
+    color: var(--color-secondary);
+    font-size: 1.618rem;
+    margin-bottom: 13px;
+}
+
+.team-member-info p {
+    font-size: 1rem;
+    line-height: 1.618;
+    margin-bottom: 21px;
+}
+
+/* SEÇÃO DE PARCEIROS */
+.partners-section {
+    background-color: rgba(41, 128, 185, 0.1);
+    padding: 89px 0;
+}
+
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 34px;
+}
+
+.partner-card {
+    background-color: rgba(255,255,255,0.05);
+    border-radius: 13px;
+    padding: 34px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.partner-card img {
+    max-width: 180px;
+    max-height: 100px;
+    filter: grayscale(100%);
+    transition: all 0.3s ease;
+}
+
+.partner-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.partner-card .partner-overlay {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(52, 152, 219, 0.9);
+    color: white;
+    padding: 21px;
+    transition: bottom 0.3s ease;
+}
+
+.partner-card:hover .partner-overlay {
+    bottom: 0;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .team-member {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .team-member-image,
+    .team-member-info {
+        flex: none;
+        width: 100%;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .partners-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
